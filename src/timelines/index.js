@@ -1,6 +1,6 @@
 import { TimelineMax as Timeline, Power1 } from 'gsap';
 
-const playDefaultTimeline = (node, delay) => {
+const getDefaultTimeline = (node, delay) => {
   const timeline = new Timeline({ paused: true });
   const content = node.querySelector('.content');
   const contentInner = node.querySelector('.content--inner');
@@ -10,10 +10,10 @@ const playDefaultTimeline = (node, delay) => {
     .from(content, 0.15, { autoAlpha: 0, y: 25, ease: Power1.easeInOut })
     .from(contentInner, 0.15, { autoAlpha: 0, delay: 0.15, ease: Power1.easeIn });
 
-  timeline.play();
+  return timeline;
 }
 
-const playHomeTimeline = (node, delay) => {
+const getHomeTimeline = (node, delay) => {
   const timeline = new Timeline({ paused: true });
   const texts = node.querySelectorAll('h1 > div');
 
@@ -21,21 +21,21 @@ const playHomeTimeline = (node, delay) => {
     .from(node, 0, { display: 'none', autoAlpha: 0, delay })
     .staggerFrom(texts, 0.375, { autoAlpha: 0, x: -25, ease: Power1.easeOut }, 0.125);
 
-  timeline.play();
+  return timeline;
 }
 
 export const playEnterTimeline = (pathname, node, isAppearing) => {
   const delay = isAppearing ? 0 : 0.5;
+  let timeline
 
-  window.loadPromise
-    .then(() => {
-      requestAnimationFrame(() => {
-        if (pathname === '/')
-          playHomeTimeline(node, delay);
-        else
-          playDefaultTimeline(node, delay);
-      })
-    });
+  if (pathname === '/')
+    timeline = getHomeTimeline(node, delay);
+  else
+    timeline = getDefaultTimeline(node, delay);
+
+  window
+    .loadPromise
+    .then(() => requestAnimationFrame(() => timeline.play()))
 }
 
 export const playExitTimeline = (node) => {
