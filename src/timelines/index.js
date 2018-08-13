@@ -24,8 +24,8 @@ const getHomeTimeline = (node, delay) => {
   return timeline;
 }
 
-export const playEnterTimeline = (pathname, node, isAppearing) => {
-  const delay = isAppearing ? 0 : 0.5;
+export const play = (pathname, node, appears) => {
+  const delay = appears ? 0 : 0.5;
   let timeline
 
   if (pathname === '/')
@@ -38,7 +38,7 @@ export const playEnterTimeline = (pathname, node, isAppearing) => {
     .then(() => requestAnimationFrame(() => timeline.play()))
 }
 
-export const playExitTimeline = (node) => {
+export const exit = (node) => {
   const timeline = new Timeline({ paused: true });
 
   timeline.to(node, 0.15, { autoAlpha: 0, ease: Power1.easeOut });

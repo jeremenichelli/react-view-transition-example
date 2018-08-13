@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
-import { playEnterTimeline, playExitTimeline } from './timelines'
+import { play, exit } from './timelines'
 import Nav from './Nav'
 import Home from './views/Home'
 import About from './views/About'
@@ -22,8 +22,8 @@ class App extends Component {
                 <Transition
                   key={key}
                   appear={true}
-                  onEnter={(node, isAppearing) => playEnterTimeline(pathname, node, isAppearing)}
-                  onExit={(node, isAppearing) => playExitTimeline(node, isAppearing)}
+                  onEnter={(node, appears) => play(pathname, node, appears)}
+                  onExit={(node, appears) => exit(node, appears)}
                   timeout={{enter: 750, exit: 150}}
                 >
                   <Switch location={location}>
