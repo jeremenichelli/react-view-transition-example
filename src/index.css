@@ -5,11 +5,23 @@ body {
   padding: 0;
 }
 
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 h1 {
   font-size: 4em;
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.03em;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 3.5em;
+  }
 }
 
 @keyframes nav {
@@ -19,8 +31,16 @@ h1 {
 
 nav {
   animation: nav 0.2s ease-in-out forwards;
+  display: flex;
+  justify-content: space-between;
   opacity: 0;
   padding: 3em;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 1em;
+  }
 }
 
 nav a {
@@ -31,6 +51,12 @@ nav a {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+  nav a {
+    margin: 0 1em;
+  }
 }
 
 @keyframes navdot {
@@ -51,6 +77,15 @@ nav a:before {
   width: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  nav a:before {
+    bottom: 150%;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
 nav a.active:before {
   animation: navdot 0.25s ease-in-out forwards 0.25s;
 }
@@ -58,6 +93,12 @@ nav a.active:before {
 .app {
   padding: 2em;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .app {
+    padding: 2em 1em 1em;
+  }
 }
 
 .with--accent {
@@ -77,6 +118,12 @@ nav a.active:before {
 
 .content--inner {
   padding: 3em;
+}
+
+@media screen and (max-width: 768px) {
+  .content--inner {
+    padding: 1em;
+  }
 }
 
 .content--excerpt {
