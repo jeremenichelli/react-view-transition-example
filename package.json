@@ -1,8 +1,8 @@
 {
-  "name": "react-view-transitions",
+  "name": "react-view-transition-example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jeremenichelli.github.io/react-view-transitions",
+  "homepage": "https://jeremenichelli.github.io/react-view-transition-example",
   "dependencies": {
     "gsap": "^2.0.1",
     "react": "^16.4.1",
